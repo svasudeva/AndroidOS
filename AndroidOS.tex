@@ -1,0 +1,290 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Dresden}
+  \setbeamercovered{transparent}
+}
+
+\usepackage[english]{babel}
+
+\usepackage{listings}
+\usepackage{hyperref}
+
+\title [ Android Operating System] % short title
+{Mobile Operating Systems}
+
+\subtitle
+{ANDROID}
+
+\author[Sheree Vasudeva] % (short authors list)
+{Sheree Vasudeva}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+  \begin{center}
+    \includegraphics[height=3.0cm]{diagrams/ics_0}
+  \end{center}
+\end{frame}
+
+
+% SLIDE
+
+
+\begin{frame}{Outline}
+  \begin{itemize}
+    \item Introduction
+	  \begin{itemize}
+   		\item What is Android?
+    		\item History of Android
+    		\item Android Versions
+    		\item Features of Android
+	  \end{itemize}	
+    \item Android Architecture
+	  \begin{itemize}
+		\item Architecture Details
+	  \end{itemize}	
+    \item MultiTasking
+	  \begin{itemize}
+    	  \item MultiTasking-IPHONE/IPAD
+    	  \item MultiTasking-The Android Way
+	  \item Processes and Threads
+	  \end{itemize}
+    \item Others
+  \end{itemize}	
+
+\end{frame}
+
+
+% SLIDE
+\begin{frame}{What is Android?}
+  \begin{itemize}
+    \item Word "Android" means a robot,designed to look and act like a human
+    \item  Android is a software stack for mobile devices that includes an operating system, middleware and key applications. 
+    \item It is based on 2.6x LINUX kernel.
+    \item It is developed by the Open Handset Alliance,a consortium of software, hardware and telecommunication companies led by Google
+    \item The Android SDK provides the tools and APIs necessary to begin developing applications on the Android platform using the Java programming language.
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{History of Android}
+  \begin{itemize}
+    \item Android Inc was founded in October 2003 by Andy Rubin, Rich Miner, Nick Sears and Chris White
+    \item Later in August 2005, Google acquired Android Inc employing its founders
+    \item OHA led to open standards for mobile software and hence most of Android's source code is published under Apache License
+    \item T-Mobile G1 is the first ever Android mobile device which was launched in 2008
+    \item Currently there are 200 million android activations
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{Android Versions}
+  \begin{itemize}		
+    \item 4.0 Ice Cream Sandwich	
+    \item 3.x.x Honeycomb		
+    \item 2.3.x Gingerbread		
+    \item 2.2 Froyo			
+    \item 2.1 Eclair			
+    \item 1.6 Donut			
+    \item 1.5 Cupcake			
+    \item Two more internal release named "Astro" and "Bender",which were changed from Robots to Desserts to avoid trademark issues.
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{Features of Android}
+  \begin{itemize}
+    \item Web Browser:Integrated browser based on the open source WebKit engine
+    \item User Interface: Custom 2D graphics library; 3D graphics based on the OpenGL ES 2.0 specifications
+    \item Data Storage: SQLite for structured data storage
+    \item Media support: Common audio, video, and still image formats (MPEG4, H.264, MP3, AAC, AMR, JPG, PNG, GIF)
+    \item Connectivity: Bluetooth, EDGE, 3G, and WiFi
+    \item Hardware Support: Camera, GPS, compass, and accelerometer, barometer
+    \item ScreenCapture: Latest Version lets you take a screenshot of the screen by pressing the power and volume buttons together.
+    \item Rich development environment including a device emulator and a plugin for the Eclipse IDE
+  \end{itemize}
+\end{frame}
+
+
+% SLIDE
+\begin{frame}{Android Architecture}
+  \begin{center}
+    \includegraphics[height=5.0cm]{diagrams/cpubound}
+  \end{center}
+\end{frame}
+
+% SLIDE
+\begin{frame}{Architecture Details}
+
+  \begin{itemize}
+  \item Applications
+  	\begin{itemize}
+  	\item Android contains a set of core applications including an email client, SMS program, calendar, maps, browser and contacts. All are written using Java.
+	\end{itemize}
+  \end{itemize}
+
+  \begin{itemize}
+  \item Application Framework
+  	\begin{itemize}
+  	\item Rich and extensible views to build applications including grids, burtons, textbooks,etc.
+  	\item Content providers provide access to data from other devices like contacts.
+  	\item Resource manager provides access to non code data like graphics and layouts
+  	\item Activity manager manages the navigations and lifecycle of applications
+  	\item Notification manager enables custom alerts in the status bar.
+	\end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{…Continued}
+  \begin{itemize}
+  \item Application Libraries
+  	\begin{itemize}
+		\item System C library - a BSD-derived implementation of the standard C system library (libc), tuned for embedded Linux-based devices		\item Media Libraries -  the libraries support playback and recording of many popular audio and video formats, as well as static image files.
+		\item Surface Manager - manages access to the display subsystem and seamlessly composites 2D and 3D graphic layers from multiple applications		\item LibWebCore - a modern web browser engine which powers both the Android browser and an embeddable web view SGL - the underlying 2D graphics engine		\item 3D libraries - an implementation based on OpenGL ES 1.0 APIs; the libraries use either hardware 3D acceleration (where available)
+		\item FreeType - bitmap and vector font rendering		\item SQLite - a powerful and lightweight relational database engine available to all applications
+	\end{itemize}
+  \end{itemize}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{Android Runtime: Dalvik Virtual Machine}
+  \begin{itemize}
+	\item DVM(Dalvik Virtual Machine) is the software for the mobile devices.
+	\item Each application in the device runs as a separate user with its unique LINUX user ID.
+	\item It has its own instance of DVM. Thus, device can run multiple VMs efficiently.
+	\item JAVA source is then compiled to bytecode. Then it is converted to .dex(executable files) from JAVA .class files.
+	\item Java bytecode is also converted into an alternative instruction set used by the Dalvik VM.
+	\item Advantage is to make it compatible with systems having less memory and processor speed
+
+  \end{itemize}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{...Dalvik Virtual Machine}
+  \begin{itemize}
+	\item The Dalvik VM relies on the Linux kernel for underlying functionality such as threading and low-level memory management.
+	\item Unlike Java VMs, which are stack machines, the Dalvik VM is a register-based architecture.
+	\item As of Android 2.2, Dalvik has a just-in-time compiler.
+	\item Compressed .dex files take less space than compressed JAVA .jar files
+	\item Standard Java bytecode executes 8-bit stack instructions. Local variables must be copied to or from the operand stack by separate instructions.
+	\item Dalvik instead uses its own 16-bit instruction set that works directly on local variables. 
+	\item The local variable is commonly picked by a 4-bit 'virtual register' field. This raises its interpreter speed.
+  \end{itemize}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{Android Kernel}
+  \begin{itemize}
+    	\item It is a fork of LINUX kernel
+	\item All the basic OS operations like I/O, memory management, and so on, are handled by the Linux kernel
+	\item Binder is an IPC mechanism, one Android process can call a routine in another Android process, using binder to identify the method to invoke and pass the arguments between processes.
+	\item Uses OOM for killing processes when memory is low
+	\item Wakelocks are used for power management.Earlier it was a set of patches to the Linux kernel to allow a caller to prevent the system from going to low power state.
+  \end{itemize}
+\end{frame}
+
+
+% SLIDE
+\begin{frame}{MultiTasking-IPHONE/IPAD}
+  \begin{itemize}
+    	\item Mobile devices and tablets have limited memory for use. So,it is very important to manage this memory well.
+	\item No hard disk means no swap memory. No swap and fixed memory
+	\item Hence, the iphone and ipad systems enforce a policy whereby once an application leaves the foreground, it terminates i.e. no background processes can run.
+	\item The iPad and iPhone user interfaces are single window, single document
+	\item Yes,music players do multitask but they are not third party
+	\item What in reality is not supported is the ability for third-party applications to multitask.
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{MultiTasking-The Android Way}
+  \begin{itemize}
+    	\item Unlike either JAVA or .NET frameworks, the Android run time also manages the process lifetimes
+	\item Android has a process virtual machine(DVM)
+	\item Each process has its own virtual machine (VM), so an application's code runs in isolation from other applications
+	\item Android ensures application responsiveness by stopping and killing processes as necessary to free resources for higher-priority applications
+	\item Bundles which are applications enable to save the current state. So,if the process is killed and requested again, the user will be shown the saved bundle
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{Processes and Threads}
+
+  \begin{itemize}
+ 	\item The question is how is the priority of which application to kill decided?
+	\item Applications are killed using LRU(Least Recently Used) algorithm when memory is required by other processes
+	\item If processes have the same priority, the process that has been at the lowest priority longest is killed
+	\item Process priority is also affected by interprocess dependencies.
+	\item If an application has a dependency on a Service or Content Provider supplied by another application, the secondary application will have at least as high a priority as the application it supports
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{…Continued}
+
+  \begin{center}
+    \includegraphics[height=5.0cm]{diagrams/processimage}
+  \end{center}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{…Process States}
+
+
+  \begin{itemize}
+	\item Active (foreground) processes are those hosting applications with components currently interacting with the user.
+	\item Background Processes Processes hosting Activities that aren’t visible and that don’t have any Services that have been started are considered background processes.
+	\item Visible, but inactive processes are those hosting “visible” Activities. As the name suggests, visible Activities are visible, but they aren’t in the foreground or responding to user events.
+	\item Processes hosting Services that have been started. Services support ongoing processing that should continue without a visible interface. 
+	\item Empty Processes improve overall system performance, Android often retains applications in memory after they have reached the end of their lifetimes. 
+  \end{itemize}
+
+\end{frame}
+
+
+% SLIDE
+\begin{frame}{Interesting Facts}
+
+  \begin{itemize}
+	\item Default File System: YAFFS(Yet Another Flash File System). Also, uses VFAT
+	\item Data Storage can be internal, external, in a private database and on the web.
+	\item The Android SDK includes a virtual mobile device emulator that runs on your computer
+	\item The emulator lets you prototype, develop, and test Android applications without using a physical device except for making calls
+	\item Popular Android apps: Android Market, Pandora, Angry Birds, Facebook, Google Maps.
+  \end{itemize}
+
+\end{frame}
+
+% SLIDE
+\begin{frame}{Interesting Links}
+  \begin{itemize}
+    \item \url{http://en.wikipedia.org/wiki/Android_(operating_system)}.
+    \item \url{http://developer.android.com/guide/index.html}.
+    \item \url{http://www.androidcentral.com/android-versions}.
+    \item \url{http://blog.rlove.org/2010/04/why-ipad-and-iphone-dontsupport.html}
+    \item \url{http://elinux.org/Android_Kernel_Features}
+    \item \url{http://elinux.org/Android_Power_Management}
+    \item \url{http://www.android.com/}
+  \end{itemize}
+\end{frame}
+
+% SLIDE
+\begin{frame}{The End}
+  \begin{center}
+    \includegraphics[height=5.0cm]{diagrams/android-vpn}
+  \end{center}
+Thank you!
+\end{frame}
+
+\end{document}
+
